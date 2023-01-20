@@ -32,7 +32,7 @@ let AuthService = class AuthService {
                     hash,
                 },
             });
-            return this.signToken(user.id, user.email, user.name);
+            return this.signToken(user.id, user.email, user.name, user.role);
         }
         catch (error) {
             if (error instanceof runtime_1.PrismaClientKnownRequestError) {
@@ -54,13 +54,14 @@ let AuthService = class AuthService {
         const pwMatches = await argon.verify(user.hash, dto.password);
         if (!pwMatches)
             throw new common_1.ForbiddenException('Credentials incorrect');
-        return this.signToken(user.id, user.email, user.name);
+        return this.signToken(user.id, user.email, user.name, user.role);
     }
-    async signToken(userId, email, name) {
+    async signToken(userId, email, name, role) {
         const payload = {
             sub: userId,
             email,
             name,
+            role,
         };
         const token = await this.jwt.signAsync(payload, {
             expiresIn: '25m',

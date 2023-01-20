@@ -16,9 +16,6 @@ let PostsService = class PostsService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async getAllPosts() {
-        return await this.prisma.post.findMany({});
-    }
     async get(userId) {
         return await this.prisma.post.findMany({
             where: {

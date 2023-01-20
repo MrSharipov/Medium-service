@@ -10,7 +10,7 @@ export class UsersController {
 
   @UseGuards(AuthGuard('jwt'))
   @Get()
-  getAll(@GetUser('id') userId) {
+  get(@GetUser('id') userId) {
     return this.usersService.get(userId);
   }
 

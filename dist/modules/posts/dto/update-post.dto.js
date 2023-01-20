@@ -21,9 +21,5 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UpdatePostDto.prototype, "description", void 0);
-__decorate([
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", String)
-], UpdatePostDto.prototype, "link", void 0);
 exports.UpdatePostDto = UpdatePostDto;
 //# sourceMappingURL=update-post.dto.js.map

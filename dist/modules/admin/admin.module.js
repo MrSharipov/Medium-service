@@ -5,21 +5,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreatePostDto = void 0;
-const class_validator_1 = require("class-validator");
-class CreatePostDto {
-}
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreatePostDto.prototype, "title", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreatePostDto.prototype, "content", void 0);
-exports.CreatePostDto = CreatePostDto;
-//# sourceMappingURL=create-post.dto.js.map
+exports.AdminModule = void 0;
+const common_1 = require("@nestjs/common");
+const admin_controller_1 = require("./admin.controller");
+const admin_service_1 = require("./admin.service");
+let AdminModule = class AdminModule {
+};
+AdminModule = __decorate([
+    (0, common_1.Module)({
+        controllers: [admin_controller_1.AdminController],
+        providers: [admin_service_1.AdminService]
+    })
+], AdminModule);
+exports.AdminModule = AdminModule;
+//# sourceMappingURL=admin.module.js.map

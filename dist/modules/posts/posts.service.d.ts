@@ -3,7 +3,6 @@ import { CreatePostDto, UpdatePostDto } from './dto';
 export declare class PostsService {
     private prisma;
     constructor(prisma: PrismaService);
-    getAllPosts(): Promise<import(".prisma/client").Post[]>;
     get(userId: number): Promise<import(".prisma/client").Post[]>;
     getById(userId: any, postId: any): Promise<import(".prisma/client").Post>;
     create(userId: number, dto: CreatePostDto): Promise<import(".prisma/client").Post>;

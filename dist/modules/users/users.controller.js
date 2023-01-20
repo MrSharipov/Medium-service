@@ -22,7 +22,7 @@ let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
-    getAll(userId) {
+    get(userId) {
         return this.usersService.get(userId);
     }
     update(dto, userId) {
@@ -36,7 +36,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], UsersController.prototype, "getAll", null);
+], UsersController.prototype, "get", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     (0, common_1.Put)(),

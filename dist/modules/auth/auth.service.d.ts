@@ -13,7 +13,7 @@ export declare class AuthService {
     signin(dto: AuthInDto): Promise<{
         access_token: string;
     }>;
-    signToken(userId: number, email: string, name: string): Promise<{
+    signToken(userId: number, email: string, name: string, role: string): Promise<{
         access_token: string;
     }>;
 }

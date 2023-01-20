@@ -13,6 +13,7 @@ const auth_module_1 = require("./modules/auth/auth.module");
 const posts_module_1 = require("./modules/posts/posts.module");
 const users_module_1 = require("./modules/users/users.module");
 const config_1 = require("@nestjs/config");
+const admin_module_1 = require("./modules/admin/admin.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -25,6 +26,7 @@ AppModule = __decorate([
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
             }),
+            admin_module_1.AdminModule,
         ],
     })
 ], AppModule);

@@ -18,11 +18,6 @@ import { PostsService } from './posts.service';
 export class PostsController {
   constructor(private postService: PostsService) {}
 
-  @Get('all')
-  getAllPosts() {
-    return this.postService.getAllPosts();
-  }
-
   @UseGuards(AuthGuard('jwt'))
   @Get()
   getAll(@GetUser('id') userId) {
