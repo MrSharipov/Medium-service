@@ -31,6 +31,9 @@ let PostsController = class PostsController {
     create(dto, userId) {
         return this.postService.create(userId, dto);
     }
+    saveReadTime(postId, readTime) {
+        return this.postService.saveReadTime(postId, readTime.time);
+    }
     update(postId, dto, userId) {
         return this.postService.update(userId, postId, dto);
     }
@@ -64,6 +67,14 @@ __decorate([
     __metadata("design:paramtypes", [dto_1.CreatePostDto, Number]),
     __metadata("design:returntype", void 0)
 ], PostsController.prototype, "create", null);
+__decorate([
+    (0, common_1.Post)('/:postId'),
+    __param(0, (0, common_1.Param)('postId', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, dto_1.ReadTimeDto]),
+    __metadata("design:returntype", void 0)
+], PostsController.prototype, "saveReadTime", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     (0, common_1.Put)(':id'),

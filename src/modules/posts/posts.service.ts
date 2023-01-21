@@ -38,6 +38,16 @@ export class PostsService {
     return post;
   }
 
+  async saveReadTime(postId, time) {
+    time = Number(time);
+    return this.prisma.readTime.create({
+      data: {
+        postId,
+        time,
+      },
+    });
+  }
+
   async update(userId: number, postId, dto: UpdatePostDto) {
     const post = await this.prisma.post.findUnique({
       where: {

@@ -8,10 +8,11 @@ import {
   Post,
   Put,
   UseGuards,
+  UsePipes,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../auth/decorator';
-import { CreatePostDto, UpdatePostDto } from './dto';
+import { CreatePostDto, ReadTimeDto, UpdatePostDto } from './dto';
 import { PostsService } from './posts.service';
 
 @Controller('posts')
@@ -34,6 +35,14 @@ export class PostsController {
   @Post()
   create(@Body() dto: CreatePostDto, @GetUser('id') userId: number) {
     return this.postService.create(userId, dto);
+  }
+
+  @Post('/:postId')
+  saveReadTime(
+    @Param('postId', ParseIntPipe) postId: number,
+    @Body() readTime: ReadTimeDto,
+  ) {
+    return this.postService.saveReadTime(postId, readTime.time);
   }
 
   @UseGuards(AuthGuard('jwt'))
