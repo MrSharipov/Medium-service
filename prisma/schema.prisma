@@ -11,24 +11,38 @@ datasource db {
 }
 
 model User {
-  id          Int      @id @default(autoincrement())
-  email       String @unique
-  hash        String
-  role        String @default("USER")
-  name        String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  posts Post[]
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  hash      String
+  role      String   @default("USER")
+  rating    Int      @default(0)
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]
+
   @@map("users")
 }
 
 model Post {
-  id            Int      @id @default(autoincrement())
-  title         String
-  content       String?
-  userId        Int
-  user         User @relation(fields: [userId], references: [id])
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id        Int        @id @default(autoincrement())
+  title     String
+  content   String?
+  rating    Int        @default(0)
+  userId    Int
+  user      User       @relation(fields: [userId], references: [id])
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  ReadTime  ReadTime[]
+
   @@map("posts")
+}
+
+model ReadTime {
+  id     Int  @id @default(autoincrement())
+  time   Int
+  post   Post @relation(fields: [postId], references: [id])
+  postId Int
+
+  @@map("readTime")
 }
